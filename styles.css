@@ -33,18 +33,15 @@ button { cursor: pointer; }
 /* ------------------------------------------------------------------ header: banner + controls (always on top) */
 #top { position: sticky; top: 0; z-index: 20; background: #fff; box-shadow: 0 1px 0 var(--line); }
 .banner {
-  height: calc(64px + var(--safe-top));
+  height: calc(48px + var(--safe-top));
   padding-top: var(--safe-top);
-  background: #1F2937 url("assets/banner.jpg") center 30% / cover no-repeat;
+  background: linear-gradient(135deg, #1D4ED8, #2563EB 60%, #3B82F6);
   position: relative;
-  display: flex; align-items: flex-end;
+  display: flex; align-items: center;
 }
-.brand {
-  margin: 0 0 8px 14px; color: #fff; font-weight: 700; font-size: 17px;
-  text-shadow: 0 1px 3px rgba(0,0,0,.55);
-}
+.brand { margin: 0 0 0 14px; color: #fff; font-weight: 700; font-size: 17px; }
 .busy {
-  position: absolute; right: 12px; bottom: 10px; width: 18px; height: 18px; border-radius: 50%;
+  position: absolute; right: 12px; bottom: 15px; width: 18px; height: 18px; border-radius: 50%;
   border: 2px solid rgba(255,255,255,.5); border-top-color: #fff; animation: spin .8s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -132,19 +129,20 @@ main { padding: 6px 0 calc(80px + var(--safe-bottom)); }
 
 .empty {
   min-height: calc(100vh - 160px); margin: -6px 0 0; display: flex; align-items: center; justify-content: center;
-  background: #1F2937 url("assets/banner.jpg") center 45% / cover no-repeat; padding: 24px;
+  background: var(--bg); padding: 24px;
 }
-.empty .panel, .splash .panel {
-  background: rgba(17, 24, 39, .82); color: #fff; border-radius: 16px; padding: 18px 22px; max-width: 520px;
-  text-align: center; font-size: 16px; backdrop-filter: blur(2px);
+.splash .panel {
+  background: rgba(17, 24, 39, .55); color: #fff; border-radius: 16px; padding: 18px 22px; max-width: 520px;
+  text-align: center; font-size: 16px;
 }
+.empty .panel { color: var(--muted); text-align: center; font-size: 16px; max-width: 520px; }
 footer { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,.94); border-top: 1px solid var(--line);
   padding: 6px 12px calc(6px + var(--safe-bottom)); font-size: 12px; color: var(--muted); text-align: center; z-index: 15; }
 
 /* ------------------------------------------------------------------ splash (the whole picture) */
 .splash {
   position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 24px;
-  background: #1F2937 url("assets/banner.jpg") center 45% / cover no-repeat;
+  background: linear-gradient(160deg, #1E3A8A, #2563EB);
 }
 .splash-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; align-items: center; }
 .btn {
