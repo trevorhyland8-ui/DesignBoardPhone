@@ -1,0 +1,63 @@
+name: Test and publish
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  test:
+    name: Test at phone size (pretend Google Drive)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test tools
+        run: |
+          pip install pillow
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Shared logic
+        run: node --test tests/core.test.mjs
+      - name: The app at iPhone size
+        run: node --test tests/phone.e2e.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phone-screenshots
+          path: tests/out/
+
+  publish:
+    name: Publish on GitHub Pages
+    needs: test
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Only the app's files
+        run: |
+          mkdir _site
+          cp -r index.html app.js core.js drive.js board.js config.js styles.css manifest.webmanifest assets _site/
+          touch _site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
