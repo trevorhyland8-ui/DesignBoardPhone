@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: names: rows and variants like the Windows app
+ok 1 - names: rows and variants like the Windows app
+  ---
+  duration_ms: 2.354956
+  type: 'test'
+  ...
+# Subtest: rows: original first, then v1, v2…; newest row first
+ok 2 - rows: original first, then v1, v2…; newest row first
+  ---
+  duration_ms: 1.456515
+  type: 'test'
+  ...
+# Subtest: an edited version saved in To be edited/0312-v1 sits after v1 in row 0312
+ok 3 - an edited version saved in To be edited/0312-v1 sits after v1 in row 0312
+  ---
+  duration_ms: 0.3632
+  type: 'test'
+  ...
+# Subtest: CSV: quotes, commas, new lines and the byte-order mark
+ok 4 - CSV: quotes, commas, new lines and the byte-order mark
+  ---
+  duration_ms: 4.119366
+  type: 'test'
+  ...
+# Subtest: an old log without the note column is upgraded when the phone adds to it
+ok 5 - an old log without the note column is upgraded when the phone adds to it
+  ---
+  duration_ms: 0.472173
+  type: 'test'
+  ...
+# Subtest: times look like the Windows app's
+ok 6 - times look like the Windows app's
+  ---
+  duration_ms: 0.257692
+  type: 'test'
+  ...
+# Subtest: replay: stars, comments, moves, undo, and edited files
+ok 7 - replay: stars, comments, moves, undo, and edited files
+  ---
+  duration_ms: 1.085711
+  type: 'test'
+  ...
+# Subtest: prompt text is the same as the Windows app's
+ok 8 - prompt text is the same as the Windows app's # SKIP Windows app code not found
+  ---
+  duration_ms: 0.129032
+  type: 'test'
+  ...
+# Subtest: the Windows app reads the phone's log, and the phone reads the Windows app's
+ok 9 - the Windows app reads the phone's log, and the phone reads the Windows app's # SKIP Windows app code not found
+  ---
+  duration_ms: 0.493343
+  type: 'test'
+  ...
+# Subtest: unique names never overwrite
+ok 10 - unique names never overwrite
+  ---
+  duration_ms: 0.649355
+  type: 'test'
+  ...
+# Subtest: shops.csv from the Windows app
+ok 11 - shops.csv from the Windows app
+  ---
+  duration_ms: 0.390951
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 2
+# todo 0
+# duration_ms 84.621643
